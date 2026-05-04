@@ -1,0 +1,30 @@
+﻿namespace gymblog1.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class AddedMacroTracker : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.MacroTrackers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Date = c.DateTime(nullable: false),
+                        Calories = c.Int(nullable: false),
+                        Protein = c.Int(nullable: false),
+                        Carbs = c.Int(nullable: false),
+                        Fat = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.MacroTrackers");
+        }
+    }
+}

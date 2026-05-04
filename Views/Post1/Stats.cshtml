@@ -1,0 +1,43 @@
+﻿@model gymblog1.Models.MacroTracker
+
+<div class="container" style="background: #1a1a1a; padding: 30px; border-radius: 15px; margin-top: 20px;">
+    <h2 style="color: #d4ff00;">DNEVNI UNOS NUTRIJENATA</h2>
+
+    @using (Html.BeginForm("SaveMacros", "Post1", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <label>Kalorije (Cilj: 2500)</label>
+                @Html.TextBoxFor(m => m.Calories, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="col-md-3">
+                <label>Proteini (Cilj: 180g)</label>
+                @Html.TextBoxFor(m => m.Protein, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="col-md-3">
+                <label>Ugljeni Hidrati (Cilj: 250g)</label>
+                @Html.TextBoxFor(m => m.Carbs, new { @class = "form-control", type = "number" })
+            </div>
+            <div class="col-md-3">
+                <br />
+                <button type="submit" class="btn" style="background: #d4ff00; font-weight: bold;">SAČUVAJ</button>
+            </div>
+        </div>
+    }
+</div>
+
+    <script>
+
+    var data = @Html.Raw(System.Web.Helpers.Json.Encode(Model));
+
+    new Chart(document.getElementById("chart"), {
+        type: 'bar',
+        data: {
+            labels: data.map(x => x.CreatedAt),
+            datasets: [{
+                label: 'Postovi',
+                data: data.map(x => x.Id)
+            }]
+        }
+    });
+    </script>

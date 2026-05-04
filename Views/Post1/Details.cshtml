@@ -1,0 +1,11 @@
+﻿@model gymblog1.Models.Post
+
+<div class="container" style="color: white; margin-top: 50px;">
+    <h1 style="color: #d4ff00;">@Model.Title</h1>
+    <p>Objavljeno: @Model.CreatedAt.ToLongDateString()</p>
+    <hr style="border-color: #333;" />
+    <div style="font-size: 1.2rem;">
+        @Model.Content
+    </div>
+    <a href="@Url.Action("TeretanaBlog", "Post1")" class="btn btn-gym mt-4">Nazad na blog</a>
+</div>

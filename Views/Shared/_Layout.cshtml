@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GymBlog</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Dodajemo malo CSS-a direktno ovde da navbar izgleda moćnije -->
+    <style>
+        .navbar {
+            border-bottom: 2px solid #d4ff00;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            color: #d4ff00 !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+            .nav-link:hover {
+                color: #d4ff00 !important;
+            }
+
+        footer {
+            color: #888;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body style="background-color: #111; color: white;">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @* Glavni logo vodi na Index *@
+            @Html.ActionLink("GYMBLOG", "Index", "Post1", new { area = "" }, new { @class = "navbar-brand" })
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    @* Sredili smo imena metoda: Index, Create i Stats (bez broja 1) *@
+                    <li>@Html.ActionLink("Početna", "Index", "Post1", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Novi Post", "Create", "Post1", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Statistika", "Stats", "Post1", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Blog", "TeretanaBlog", "Post1", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @* Ovde možeš dodati Login ako ti zatreba kasnije *@
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content" style="margin-top: 50px;">
+        @RenderBody()
+        <hr style="border-color: #333;" />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - GymBlog SRB | Fokus: 180g P / 250g UH</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

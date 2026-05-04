@@ -1,0 +1,107 @@
+﻿@model IEnumerable<gymblog1.Models.Post>
+
+@{
+    ViewBag.Title = "Teretana Blog";
+}
+
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+
+        <!-- LEVA KOLONA: Lista treninga i obroka -->
+        <div class="col-md-8">
+            <h2 style="color: #d4ff00; margin-bottom: 20px; font-weight: 800;">VAŠI TRENING POSLOVI</h2>
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info" style="background: #222; border: 1px dashed #d4ff00; color: white;">
+                    Još uvek nema postova. <a href="@Url.Action("Create", "Post1")" style="color: #d4ff00;">Objavi svoj prvi trening!</a>
+                </div>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <div class="post-card" style="background: #1a1a1a; border-radius: 12px; margin-bottom: 25px; border: 1px solid #333; overflow: hidden; transition: 0.3s;">
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="@Url.Content(item.ImagePath)" style="width: 100%; height: 250px; object-fit: cover;" />
+                        }
+                        <div style="padding: 20px;">
+                            <h3 style="color: #d4ff00; margin-top: 0;">@item.Title</h3>
+                            <p style="color: #ccc; font-size: 0.9em;">Objavljeno: @item.CreatedAt.ToShortDateString()</p>
+                            <p style="color: white; line-height: 1.6;">@item.Content</p>
+                            <hr style="border-color: #333;" />
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #d4ff00; font-weight: bold;">❤️ 12 Lajkova</span>
+                                @Html.ActionLink("Detalji", "Details", new { id = item.Id }, new { @class = "btn-gym" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- DESNA KOLONA: Sidebar sa tvojim makrosima -->
+        <div class="col-md-4">
+            <div class="sidebar-box" style="background: #1a1a1a; padding: 25px; border-radius: 15px; border-top: 4px solid #d4ff00; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <h3 style="color: white; text-align: center; margin-top: 0;">DNEVNI PROGRES</h3>
+                <p style="text-align: center; color: #888; font-size: 0.8em;">Cilj: 2500 kcal</p>
+                <hr style="border-color: #333;" />
+
+                <!-- PROTEINI -->
+                <div class="stat-item" style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; color: white; margin-bottom: 5px;">
+                        <span>Proteini</span>
+                        <span style="color: #d4ff00;">126g / 180g</span>
+                    </div>
+                    <div class="progress" style="background: #333; height: 12px; border-radius: 10px;">
+                        <div class="progress-bar" style="width: 70%; background: #d4ff00; border-radius: 10px;"></div>
+                    </div>
+                </div>
+
+                <!-- UGLJENI HIDRATI -->
+                <div class="stat-item" style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; color: white; margin-bottom: 5px;">
+                        <span>Ugljeni Hidrati</span>
+                        <span style="color: #00e5ff;">125g / 250g</span>
+                    </div>
+                    <div class="progress" style="background: #333; height: 12px; border-radius: 10px;">
+                        <div class="progress-bar" style="width: 50%; background: #00e5ff; border-radius: 10px;"></div>
+                    </div>
+                </div>
+
+                <div style="background: #222; padding: 15px; border-radius: 8px; text-align: center; margin-top: 20px;">
+                    <p style="color: #fff; font-style: italic; margin-bottom: 0;">"Sutra se vraćam na jaja i ovsene!"</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #111;
+        color: white;
+    }
+
+    .btn-gym {
+        background: #d4ff00;
+        color: black;
+        padding: 8px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+        .btn-gym:hover {
+            background: white;
+            color: black;
+            text-decoration: none;
+        }
+
+    .post-card:hover {
+        transform: translateY(-5px);
+        border-color: #d4ff00;
+    }
+</style>

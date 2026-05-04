@@ -1,0 +1,183 @@
+﻿
+body {
+    background-color: #0c0c0c;
+    color: #eeeeee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.post-container {
+    background: #1a1a1a;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #d4ff00;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+}
+
+    .post-container:hover {
+        transform: scale(1.01);
+    }
+
+h2, h3 {
+    color: #d4ff00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+    input:focus, textarea:focus {
+        border-color: #d4ff00;
+        outline: none;
+    }
+
+.btn-primary, button {
+    background-color: #d4ff00;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+    .btn-primary:hover, button:hover {
+        background-color: #b8de00;
+        box-shadow: 0 0 10px rgba(212, 255, 0, 0.4);
+    }
+
+.post-links a {
+    color: #d4ff00;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+    .post-links a:hover {
+        text-decoration: underline;
+    }
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+    .search-bar input {
+        width: 300px;
+    }
+/* Sređivanje onog žutog dugmeta i inputa sa slike */
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+    .search-form input, .search-form select {
+        background: #222;
+        border: 1px solid #444;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+    }
+
+    .search-form button {
+        background-color: #d4ff00; /* Neon žuto/zelena sa slike */
+        color: black;
+        border: none;
+        padding: 10px 30px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: 0.3s;
+    }
+
+        .search-form button:hover {
+            background-color: white;
+        }
+
+/* Kartice za postove */
+.post-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+    .post-content h2 {
+        color: #d4ff00;
+        margin-top: 0;
+    }
+.sidebar-box {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border-top: 3px solid #d4ff00;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9em;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d4ff00;
+}
+
+.progress {
+    background-color: #333;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    line-height: 20px;
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+}
